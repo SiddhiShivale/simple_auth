@@ -3,10 +3,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:login_signup_ui/screens/LoginPage.dart';
-import 'package:login_signup_ui/firebase_options.dart';
 import 'package:login_signup_ui/repository/authentication_repository/authentication_repository%20.dart';
-import 'package:login_signup_ui/screens/home_screen.dart';
+import 'package:login_signup_ui/screens/login.dart';
+import 'package:login_signup_ui/firebase_options.dart';
+import 'package:login_signup_ui/screens/signup.dart';
 
 void main() {
   //Before running or generating widgets first initialize the firebase
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: LoginPage(),
     );
   }
 }

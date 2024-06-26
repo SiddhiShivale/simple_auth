@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup_ui/Componets/button.dart';
+import 'package:login_signup_ui/Componets/heading_text.dart';
 import 'package:login_signup_ui/Componets/inputfeild.dart';
-import 'package:login_signup_ui/screens/LoginPage.dart';
-import 'package:login_signup_ui/screens/enterOtp.dart';
+import 'package:login_signup_ui/screens/login.dart';
+import 'package:login_signup_ui/screens/enter_otp.dart';
 
 class forgotPassword extends StatelessWidget {
   const forgotPassword({super.key});
@@ -40,14 +41,7 @@ class forgotPassword extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20),
-              Text(
-                "Forget Password?",
-                style: TextStyle(
-                    fontFamily: GoogleFonts.poppins().fontFamily,
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              ),
+              Center(child: HeadingText(name: 'Forget Password?')),
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

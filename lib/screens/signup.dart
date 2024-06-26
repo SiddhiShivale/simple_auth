@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:login_signup_ui/Componets/button.dart';
-import 'package:login_signup_ui/screens/LoginPage.dart';
+import 'package:login_signup_ui/Componets/heading_text.dart';
+import 'package:login_signup_ui/screens/login.dart';
 import 'package:login_signup_ui/features/authentication/controllers/signup_controller.dart';
 
 class SignupPage extends StatefulWidget {
@@ -14,6 +15,7 @@ class SignupPage extends StatefulWidget {
   @override
   State<SignupPage> createState() => _SignupPageState();
 }
+
 
 class _SignupPageState extends State<SignupPage> {
   bool acceptTerms = false;
@@ -24,6 +26,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
 
     final controller = Get.put(SignupController());
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -33,29 +36,15 @@ class _SignupPageState extends State<SignupPage> {
             child: Form(
               key: _formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Sign up",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: GoogleFonts.poppins().fontFamily),
-                      ),
-                    ],
-                  ),
+                  Center(child: HeadingText(name: 'Sign up')),
+                  
                   SizedBox(height: 50),
                   TextFormField(
                     controller: controller.fullName,
                     cursorColor: Colors.grey,
                     style: TextStyle(color: Colors.grey),
                     decoration: InputDecoration(
-                      fillColor:  Color.fromARGB(255, 128, 125, 125),
                         enabledBorder:OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(color: Color.fromARGB(255, 145, 145, 145)),

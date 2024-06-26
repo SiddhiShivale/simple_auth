@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:login_signup_ui/Componets/button.dart';
+import 'package:login_signup_ui/Componets/heading_text.dart';
 import 'package:login_signup_ui/Componets/inputfeild.dart';
-import 'package:login_signup_ui/screens/SignupPage.dart';
-import 'package:login_signup_ui/screens/forgotPassword.dart';
+import 'package:login_signup_ui/screens/home_screen.dart';
+import 'package:login_signup_ui/screens/signup.dart';
+import 'package:login_signup_ui/screens/forgot_password.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -21,26 +22,18 @@ class LoginPage extends StatelessWidget {
           padding: EdgeInsets.only(top: 140, left: 20, right: 20),
           child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Login",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: GoogleFonts.poppins().fontFamily),
-                    ),
-                  ],
-                ),
+                Center(child: HeadingText(name: 'Login')),
                 SizedBox(height: 50),
-                InputFeild(name: 'Email', prefixIcon: Icon(Icons.email), type: TextInputType.emailAddress),
+                InputFeild(
+                    name: 'Email',
+                    prefixIcon: Icon(Iconsax.direct),
+                    type: TextInputType.emailAddress),
                 SizedBox(height: 20),
-                InputFeild(name: 'Password', prefixIcon: Icon(Iconsax.password_check), type: TextInputType.visiblePassword),
+                InputFeild(
+                    name: 'Password',
+                    prefixIcon: Icon(Iconsax.password_check),
+                    type: TextInputType.visiblePassword),
                 SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -64,7 +57,14 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 40),
-                Button(name: "Login"),
+                InkWell(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                    },
+                    child: Button(name: "Login")),
                 SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -99,6 +99,7 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
+                      width: 50,
                       height: 50,
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -106,13 +107,7 @@ class LoginPage extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: const Color.fromARGB(255, 47, 45, 45),
                       ),
-                      child: Container(
-                        height: 30,
-                        child: Image.asset(
-                          'assets/twitter_logo.png',
-                          scale: 1,
-                        ),
-                      ),
+                      child: Image.asset('assets/images/twitter_logo.png'),
                     ),
                     SizedBox(width: 20),
                     Container(
@@ -124,7 +119,7 @@ class LoginPage extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: const Color.fromARGB(255, 47, 45, 45),
                       ),
-                      child: Image.asset('assets/google_logo.png'),
+                      child: Image.asset('assets/images/google_logo.png'),
                     ),
                     SizedBox(width: 20),
                     Container(
@@ -136,7 +131,7 @@ class LoginPage extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: const Color.fromARGB(255, 47, 45, 45),
                       ),
-                      child: Image.asset('assets/linkedin_logo.png'),
+                      child: Image.asset('assets/images/linkedin_logo.png'),
                     ),
                   ],
                 ),

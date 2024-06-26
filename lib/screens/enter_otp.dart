@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup_ui/Componets/button.dart';
+import 'package:login_signup_ui/Componets/heading_text.dart';
 import 'package:login_signup_ui/Componets/otp_inputfeild.dart';
-import 'package:login_signup_ui/screens/forgotPassword.dart';
-import 'package:login_signup_ui/screens/resetPassword.dart';
+import 'package:login_signup_ui/screens/forgot_password.dart';
+import 'package:login_signup_ui/screens/reset_password.dart';
 
 class enterOtp extends StatelessWidget {
   const enterOtp({super.key});
@@ -39,14 +40,7 @@ class enterOtp extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20),
-              Text(
-                "Enter OTP",
-                style: TextStyle(
-                    fontFamily: GoogleFonts.poppins().fontFamily,
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              ),
+              Center(child: HeadingText(name: 'Enter OTP')),
               SizedBox(height: 20),
               Text(
                 "Enter the OTP we sent you at",

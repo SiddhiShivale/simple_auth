@@ -9,7 +9,6 @@ class InputFeild extends StatelessWidget {
   final Icon? suffixIcon;
   final TextInputType? type;
 
-
   const InputFeild(
       {super.key,
       required this.name,
@@ -19,21 +18,25 @@ class InputFeild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return TextFormField(
-      
-                      keyboardType: TextInputType.visiblePassword,
-                      cursorColor: Colors.black,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          prefixIcon: prefixIcon, //Icon(Iconsax.password_check),
-                          suffixIcon: suffixIcon, //(Iconsax.eye_slash),
-                          labelText: name,
-                          labelStyle: TextStyle(
-                              color: Colors.grey,
-                              fontFamily: GoogleFonts.poppins().fontFamily)),
-                    );
+      keyboardType: type,
+      cursorColor: Colors.grey,
+      style: TextStyle(color: Colors.grey),
+      decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(color: Color.fromARGB(255, 145, 145, 145)),
+          ),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Color.fromARGB(255, 212, 212, 212))),
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+          labelText: name,
+          labelStyle: TextStyle(
+              color: Colors.grey,
+              fontFamily: GoogleFonts.poppins().fontFamily)),
+    );
   }
 }

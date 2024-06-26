@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:login_signup_ui/Componets/button.dart';
-import 'package:login_signup_ui/screens/LoginPage.dart';
+import 'package:login_signup_ui/Componets/heading_text.dart';
+import 'package:login_signup_ui/screens/login.dart';
 
 class resetPassword extends StatelessWidget {
   const resetPassword({super.key});
@@ -31,14 +32,7 @@ class resetPassword extends StatelessWidget {
                   ),
                 ],
               ),
-              Text(
-                "Reset Password?",
-                style: TextStyle(
-                    fontFamily: GoogleFonts.poppins().fontFamily,
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              ),
+              Center(child: HeadingText(name: 'Reset Password')),
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
