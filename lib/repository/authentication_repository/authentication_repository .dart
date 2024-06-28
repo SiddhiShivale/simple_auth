@@ -1,5 +1,7 @@
 // ignore_for_file: empty_catches, unnecessary_null_comparison, unused_catch_clause
 
+//* * https://firebase.google.com/docs/auth/admin/errors
+
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:login_signup_ui/screens/login.dart';
@@ -12,6 +14,7 @@ class AuthenticationRepository extends GetxController {
   //variables
   final _auth = FirebaseAuth.instance;
   late final Rx<User?> firebaseUser;
+  var verificationId = ''.obs;  //obs => observable value. Whenever there is any change in the verification id it will automatically update its children
 
   @override
   void onReady() {
@@ -28,12 +31,46 @@ class AuthenticationRepository extends GetxController {
         : Get.offAll(const HomeScreen());
   }
 
+  //phone number authentication function
+  Future<void> phoneAuthentication(String phoneNo) async {
+    await _auth.verifyPhoneNumber(
+        phoneNumber: phoneNo, //gives phone number of the user
+        verificationCompleted:
+            (credential) async {
+              await _auth.signInWithCredential(credential); //this is where to redirect the user after he is successfully verified.
+            }, //on verification completed the user crediantials will be given
+        verificationFailed: (e) {
+          if(e.code == 'invalid-phone-number') {
+            Get.snackbar('Error', 'The provided phone number is not valid.');
+          }
+          else {
+            Get.snackbar('Error', 'Something went wrong! Try again.');
+          }
+        },
+        codeSent: (verificationId, resendToken) { //when the code is sent we need to get the verification Id and let the user enter the Otp 
+          this.verificationId.value = verificationId;
+        },
+        codeAutoRetrievalTimeout: (verificationId) {
+          this.verificationId.value = verificationId; //this will pass the current value of verification id
+        }, //when we have to resend the code after some time 
+    );
+  }
+
+  Future<bool> verifyOTP(String otp) async{ //this function is going to call when user enters the otp
+    var credentials = await _auth
+      .signInWithCredential(PhoneAuthProvider.credential(verificationId: this.verificationId.value, smsCode: otp));
+    return credentials.user != null ? true : false; 
+  }
+
   Future<void> createUserWithEmailAndPassword(
       String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-          firebaseUser != null ? Get.offAll(() => const HomeScreen()) : Get.offAll(() => const LoginPage()); //when user is successfully signed in
+      firebaseUser != null
+          ? Get.offAll(() => const HomeScreen())
+          : Get.offAll(
+              () => const LoginPage()); //when user is successfully signed in
     } on FirebaseAuthException catch (e) {
       final ex = SignupEmailPasswordFailure.code(e.code);
       print('Firebase Auth Exception - ${ex.message}');

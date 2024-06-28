@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:login_signup_ui/Componets/button.dart';
 import 'package:login_signup_ui/Componets/heading_text.dart';
+import 'package:login_signup_ui/Componets/inputfeild.dart';
+import 'package:login_signup_ui/screens/enter_otp.dart';
 import 'package:login_signup_ui/screens/login.dart';
 import 'package:login_signup_ui/features/authentication/controllers/signup_controller.dart';
 
@@ -16,7 +18,6 @@ class SignupPage extends StatefulWidget {
   State<SignupPage> createState() => _SignupPageState();
 }
 
-
 class _SignupPageState extends State<SignupPage> {
   bool acceptTerms = false;
 
@@ -24,7 +25,6 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
-
     final controller = Get.put(SignupController());
 
     return SafeArea(
@@ -38,89 +38,47 @@ class _SignupPageState extends State<SignupPage> {
               child: Column(
                 children: [
                   Center(child: HeadingText(name: 'Sign up')),
-                  
                   SizedBox(height: 50),
-                  TextFormField(
-                    controller: controller.fullName,
-                    cursorColor: Colors.grey,
-                    style: TextStyle(color: Colors.grey),
-                    decoration: InputDecoration(
-                        enabledBorder:OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: Color.fromARGB(255, 145, 145, 145)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: Color.fromARGB(255, 212, 212, 212))
-                        ),
-                        prefixIcon: Icon(Icons.person_outline_rounded),
-                        labelText: 'Full Name',
-                        labelStyle: TextStyle(
-                            color: const Color.fromARGB(255, 108, 107, 107),
-                            fontFamily: GoogleFonts.poppins().fontFamily),),
-                  ),
+                  InputFeild(
+                      name: 'Full Name',
+                      prefixIcon: Icon(Iconsax.user),
+                      controller: controller.fullName),
                   SizedBox(height: 20),
-                  TextFormField(
-                    controller: controller.email,
-                    keyboardType: TextInputType.emailAddress,
-                    style: TextStyle(color: Colors.grey),
-                    cursorColor: Colors.white,
-                    decoration: InputDecoration(
-                        enabledBorder:OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: const Color.fromARGB(255, 108, 107, 107))
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: const Color.fromARGB(255, 212, 212, 212))
-                        ),
-                        prefixIcon: Icon(Icons.email_outlined),
-                        labelText: 'Email',
-                        labelStyle: TextStyle(
-                            color: const Color.fromARGB(255, 108, 107, 107),
-                            fontFamily: GoogleFonts.poppins().fontFamily)),
-                  ),
+                  InputFeild(
+                      name: 'Email',
+                      prefixIcon: Icon(Iconsax.direct),
+                      type: TextInputType.emailAddress,
+                      controller: controller.email),
                   SizedBox(height: 20),
-                  TextFormField(
-                    controller: controller.phoneNo,
-                    keyboardType: TextInputType.number,
-                    style: TextStyle(color: Colors.grey),
-                    cursorColor: Colors.white,
-                    decoration: InputDecoration(
-                        enabledBorder:OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: const Color.fromARGB(255, 108, 107, 107))
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: const Color.fromARGB(255, 212, 212, 212))
-                        ),
-                        prefixIcon: Icon(Icons.phone_outlined),
-                        labelText: 'Phone no',
-                        labelStyle: TextStyle(
-                            color: const Color.fromARGB(255, 108, 107, 107),
-                            fontFamily: GoogleFonts.poppins().fontFamily)),
-                  ),
+                  InputFeild(
+                      name: 'Phone no',
+                      prefixIcon: Icon(Iconsax.call),
+                      controller: controller.phoneNo,
+                      type: TextInputType.phone),
                   SizedBox(height: 20),
                   TextFormField(
                     controller: controller.password,
                     keyboardType: TextInputType.visiblePassword,
+                    obscureText: true,
+                    cursorColor: Colors.grey,
                     style: TextStyle(color: Colors.grey),
-                    //obscureText: true,
-                    cursorColor: Colors.white,
                     decoration: InputDecoration(
-                        enabledBorder:OutlineInputBorder(
+                        filled: true,
+                        fillColor: Color.fromARGB(255, 32, 31, 31),
+                        enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: const Color.fromARGB(255, 108, 107, 107))
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(255, 145, 145, 145)),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: const Color.fromARGB(255, 212, 212, 212))
-                        ),
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 212, 212, 212))),
                         prefixIcon: Icon(Iconsax.password_check),
+                        suffixIcon: Icon(Iconsax.eye_slash),
                         labelText: 'Password',
                         labelStyle: TextStyle(
-                            color: const Color.fromARGB(255, 108, 107, 107),
+                            color: Colors.grey,
                             fontFamily: GoogleFonts.poppins().fontFamily)),
                   ),
                   SizedBox(height: 15),
@@ -135,40 +93,41 @@ class _SignupPageState extends State<SignupPage> {
                           });
                         },
                         activeColor: const Color.fromARGB(255, 250, 88, 60),
-                        //fillColor: Colors.grey,
                       ),
                     ),
                     SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "By continuing you accept our Privacy Policy",
+                    Text.rich(TextSpan(children: [
+                      TextSpan(
+                          text: 'I agree to ',
+                          style: TextStyle(color: Colors.white)),
+                      TextSpan(
+                          text: 'Privacy Policy ',
+                          style: TextStyle(color: Colors.blue)),
+                      TextSpan(
+                          text: 'and ',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 13,
-                            fontFamily: GoogleFonts.poppins().fontFamily,
-                          ),
-                        ),
-                        Text(
-                          "and Terms of Use",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 13,
-                            fontFamily: GoogleFonts.poppins().fontFamily,
-                          ),
-                        ),
-                      ],
-                    ),
+                          )),
+                      TextSpan(
+                          text: 'Terms of Use',
+                          style: TextStyle(color: Colors.blue)),
+                    ])),
                   ]),
                   SizedBox(height: 40),
                   InkWell(
-                    onTap: (){
-                      if(_formKey.currentState!.validate()) {
-                        SignupController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
-                      }
-                    },
-                    child: Button(name: "Continue")),
+                      onTap: () {
+                        if (_formKey.currentState!.validate()) {
+                          // SignupController.instance.registerUser(
+                          //     controller.email.text.trim(),
+                          //     controller.password.text.trim());
+                          SignupController.instance.phoneAuthentication(controller.phoneNo.text.trim());
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EnterOtp()));
+                        }
+                      },
+                      child: Button(name: "Continue")),
                   SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -203,6 +162,7 @@ class _SignupPageState extends State<SignupPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
+                        width: 50,
                         height: 50,
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -210,13 +170,7 @@ class _SignupPageState extends State<SignupPage> {
                           shape: BoxShape.circle,
                           color: const Color.fromARGB(255, 47, 45, 45),
                         ),
-                        child: Container(
-                          height: 30,
-                          child: Image.asset(
-                            'assets/images/twitter_logo.png',
-                            scale: 1,
-                          ),
-                        ),
+                        child: Image.asset('assets/images/twitter_logo.png'),
                       ),
                       SizedBox(width: 20),
                       Container(

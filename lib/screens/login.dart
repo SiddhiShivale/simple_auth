@@ -26,14 +26,35 @@ class LoginPage extends StatelessWidget {
                 Center(child: HeadingText(name: 'Login')),
                 SizedBox(height: 50),
                 InputFeild(
-                    name: 'Email',
-                    prefixIcon: Icon(Iconsax.direct),
-                    type: TextInputType.emailAddress),
+                  name: 'Email',
+                  prefixIcon: Icon(Iconsax.direct),
+                  type: TextInputType.emailAddress,
+                ),
                 SizedBox(height: 20),
-                InputFeild(
-                    name: 'Password',
-                    prefixIcon: Icon(Iconsax.password_check),
-                    type: TextInputType.visiblePassword),
+                TextFormField(
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                  cursorColor: Colors.grey,
+                  style: TextStyle(color: Colors.grey),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color.fromARGB(255, 32, 31, 31),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(255, 145, 145, 145)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(255, 212, 212, 212))),
+                      prefixIcon: Icon(Iconsax.password_check),
+                      suffixIcon: Icon(Iconsax.eye_slash),
+                      labelText: 'Password',
+                      labelStyle: TextStyle(
+                          color: Colors.grey,
+                          fontFamily: GoogleFonts.poppins().fontFamily)),
+                ),
                 SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -43,7 +64,7 @@ class LoginPage extends StatelessWidget {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => forgotPassword()));
+                                builder: (context) => ForgotPassword()));
                       },
                       child: Text(
                         "Forgot your password?",

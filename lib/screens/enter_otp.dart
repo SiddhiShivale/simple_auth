@@ -1,18 +1,22 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup_ui/Componets/button.dart';
 import 'package:login_signup_ui/Componets/heading_text.dart';
-import 'package:login_signup_ui/Componets/otp_inputfeild.dart';
+import 'package:login_signup_ui/features/authentication/controllers/otp_controller.dart';
 import 'package:login_signup_ui/screens/forgot_password.dart';
-import 'package:login_signup_ui/screens/reset_password.dart';
+import 'package:login_signup_ui/screens/home_screen.dart';
 
-class enterOtp extends StatelessWidget {
-  const enterOtp({super.key});
+class EnterOtp extends StatelessWidget {
+  const EnterOtp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var otpController = Get.put(OtpController());
+    var otp;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -20,7 +24,7 @@ class enterOtp extends StatelessWidget {
         leading: InkWell(
             onTap: () {
               Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => forgotPassword()));
+                  MaterialPageRoute(builder: (context) => ForgotPassword()));
             },
             child: Icon(Icons.arrow_back, color: Colors.grey)),
       ),
@@ -29,16 +33,11 @@ class enterOtp extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 200,
-                    height: 200,
-                    child: Image.asset('assets/enter_otp_illustration.png'),
-                  ),
-                ],
-              ),
+              Image(
+                  width: 200,
+                  height: 200,
+                  image:
+                      AssetImage('assets/images/enter_otp_illustration.png')),
               SizedBox(height: 20),
               Center(child: HeadingText(name: 'Enter OTP')),
               SizedBox(height: 20),
@@ -59,22 +58,34 @@ class enterOtp extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  OtpInputfeild(),
-                  OtpInputfeild(),
-                  OtpInputfeild(),
-                  OtpInputfeild(),
-                ],
+              OtpTextField(
+                numberOfFields: 6,
+                fieldWidth: 55,
+                fieldHeight: 55,
+                showFieldAsBox: true,
+                borderRadius: BorderRadius.circular(10),
+                enabledBorderColor: Colors.grey,
+                focusedBorderColor: const Color.fromARGB(255, 250, 88, 60),
+                fillColor: Color.fromARGB(255, 32, 31, 31),
+                cursorColor: Colors.grey,
+                textStyle: TextStyle(
+                    color: Colors.white,
+                    fontFamily: GoogleFonts.poppins().fontFamily,
+                    fontSize: 20),
+                filled: true,
+                onSubmit: (code) {
+                  otp = code;
+                  OtpController.instance.verifyOTP(otp);
+                },
               ),
               SizedBox(height: 40),
               InkWell(
                   onTap: () {
+                    OtpController.instance.verifyOTP(otp);
                     Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => resetPassword()));
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()));
                   },
                   child: Button(name: "Continue")),
               SizedBox(height: 40),

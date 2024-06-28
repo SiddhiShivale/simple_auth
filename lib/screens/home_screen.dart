@@ -11,6 +11,15 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: InkWell(
+            onTap: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LoginPage()));
+            },
+            child: Icon(Icons.arrow_back, color: Colors.grey)),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(

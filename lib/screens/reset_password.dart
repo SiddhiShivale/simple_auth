@@ -17,97 +17,75 @@ class resetPassword extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
-        padding: EdgeInsets.only(top: 60, right: 20, left: 20),
+        padding: EdgeInsets.only(top: 120, right: 20, left: 20),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 200,
-                    height: 200,
-                    child:
-                        Image.asset('assets/reset_password_illustration.png'),
-                  ),
-                ],
-              ),
+              Image(
+                  width: 200,
+                  height: 200,
+                  image: AssetImage(
+                      'assets/images/reset_password_illustration.png')),
               Center(child: HeadingText(name: 'Reset Password')),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 380,
-                    child: Text(
-                      "Enter a new password to reset the password on your account. We'll ask for this password whenever you log in.",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 128, 125, 125),
-                        fontFamily: GoogleFonts.poppins().fontFamily,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
+              Text(
+                "Enter a new password to reset the password on your account. We'll ask for this password whenever you log in.",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 128, 125, 125),
+                  fontFamily: GoogleFonts.poppins().fontFamily,
+                ),
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: 40),
-              Container(
-                  width: screenWidth * 1.0,
-                  child: TextField(
-                    style: TextStyle(color: Colors.white),
-                    keyboardType: TextInputType.visiblePassword,
-                    cursorColor: Colors.white,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color.fromARGB(255, 47, 45, 45),
-                      hintText: 'New Password',
-                      hintStyle: TextStyle(
-                          color: Color.fromARGB(255, 128, 125, 125),
-                          fontFamily: GoogleFonts.poppins().fontFamily),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: const Color.fromARGB(255, 128, 125, 125)),
-                          borderRadius: BorderRadius.circular(10)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: const Color.fromARGB(255, 128, 125, 125)),
-                          borderRadius: BorderRadius.circular(10)),
-                      prefixIcon: Icon(Icons.lock_outline),
-                      prefixIconColor: const Color.fromARGB(255, 128, 125, 125),
-                      suffixIcon: Icon(Iconsax.eye_slash),
-                      suffixIconColor: const Color.fromARGB(255, 128, 125, 125),
+              TextFormField(
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: true,
+                cursorColor: Colors.grey,
+                style: TextStyle(color: Colors.grey),
+                decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color.fromARGB(255, 32, 31, 31),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 145, 145, 145)),
                     ),
-                  )),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(255, 212, 212, 212))),
+                    prefixIcon: Icon(Iconsax.password_check),
+                    suffixIcon: Icon(Iconsax.eye_slash),
+                    labelText: 'New password',
+                    labelStyle: TextStyle(
+                        color: Colors.grey,
+                        fontFamily: GoogleFonts.poppins().fontFamily)),
+              ),
               SizedBox(height: 20),
-              Container(
-                  width: screenWidth * 1.0,
-                  child: TextField(
-                    style: TextStyle(color: Colors.white),
-                    keyboardType: TextInputType.visiblePassword,
-                    cursorColor: Colors.white,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color.fromARGB(255, 47, 45, 45),
-                      hintText: 'Confirm your password',
-                      hintStyle: TextStyle(
-                          color: Color.fromARGB(255, 128, 125, 125),
-                          fontFamily: GoogleFonts.poppins().fontFamily),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: const Color.fromARGB(255, 128, 125, 125)),
-                          borderRadius: BorderRadius.circular(10)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: const Color.fromARGB(255, 128, 125, 125)),
-                          borderRadius: BorderRadius.circular(10)),
-                      prefixIcon: Icon(Icons.lock_outline),
-                      prefixIconColor: const Color.fromARGB(255, 128, 125, 125),
-                      suffixIcon: Icon(Iconsax.eye_slash),
-                      suffixIconColor: const Color.fromARGB(255, 128, 125, 125),
+              TextFormField(
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: true,
+                cursorColor: Colors.grey,
+                style: TextStyle(color: Colors.grey),
+                decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color.fromARGB(255, 32, 31, 31),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 145, 145, 145)),
                     ),
-                  )),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(255, 212, 212, 212))),
+                    prefixIcon: Icon(Iconsax.password_check),
+                    suffixIcon: Icon(Iconsax.eye_slash),
+                    labelText: 'Confirm new password',
+                    labelStyle: TextStyle(
+                        color: Colors.grey,
+                        fontFamily: GoogleFonts.poppins().fontFamily)),
+              ),
               SizedBox(height: 40),
               Button(name: 'Login'),
               SizedBox(height: 35),

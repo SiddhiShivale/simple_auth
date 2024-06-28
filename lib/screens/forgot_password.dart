@@ -5,11 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup_ui/Componets/button.dart';
 import 'package:login_signup_ui/Componets/heading_text.dart';
 import 'package:login_signup_ui/Componets/inputfeild.dart';
-import 'package:login_signup_ui/screens/login.dart';
 import 'package:login_signup_ui/screens/enter_otp.dart';
+import 'package:login_signup_ui/screens/login.dart';
 
-class forgotPassword extends StatelessWidget {
-  const forgotPassword({super.key});
+class ForgotPassword extends StatelessWidget {
+  const ForgotPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,35 +29,21 @@ class forgotPassword extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 200,
-                    height: 200,
-                    child:
-                        Image.asset('assets/forgot_password_illustration.png'),
-                  ),
-                ],
-              ),
+              Image(
+                  width: 200,
+                  height: 200,
+                  image: AssetImage(
+                      'assets/images/forgot_password_illustration.png')),
               SizedBox(height: 20),
               Center(child: HeadingText(name: 'Forget Password?')),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 380,
-                    child: Text(
-                      "Enter the email address you used when you joined and we'll send you instructions to reset you password.",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 128, 125, 125),
-                        fontFamily: GoogleFonts.poppins().fontFamily,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
+              Text(
+                "Enter the email address you used when you joined and we'll send you instructions to reset you password.",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 128, 125, 125),
+                  fontFamily: GoogleFonts.poppins().fontFamily,
+                ),
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: 40),
               InputFeild(
@@ -68,7 +54,7 @@ class forgotPassword extends StatelessWidget {
               InkWell(
                   onTap: () {
                     Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => enterOtp()));
+                        MaterialPageRoute(builder: (context) => EnterOtp()));
                   },
                   child: Button(name: "Continue"))
             ],
