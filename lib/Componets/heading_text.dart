@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HeadingText extends StatelessWidget {
   final String name;
+  
 
   const HeadingText({super.key, required this.name});
 

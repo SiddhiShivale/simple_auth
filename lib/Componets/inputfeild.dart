@@ -29,7 +29,7 @@ class InputFeild extends StatelessWidget {
           filled: true,
           fillColor: Color.fromARGB(255, 32, 31, 31),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(100),
             borderSide: BorderSide(color: Color.fromARGB(255, 145, 145, 145)),
           ),
           focusedBorder: OutlineInputBorder(
