@@ -9,6 +9,7 @@ class InputFeild extends StatelessWidget {
   final Icon? suffixIcon;
   final TextInputType? type;
   final TextEditingController? controller;
+  final String? initialValue;
 
   const InputFeild(
       {super.key,
@@ -16,11 +17,12 @@ class InputFeild extends StatelessWidget {
       required this.prefixIcon,
       this.suffixIcon,
       this.type,
-      this.controller});
+      this.controller, this.initialValue});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       controller: controller,
       keyboardType: type,
       cursorColor: Colors.grey,

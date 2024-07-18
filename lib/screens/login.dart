@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:login_signup_ui/Componets/button.dart';
@@ -37,10 +38,10 @@ class LoginPage extends StatelessWidget {
                   cursorColor: Colors.grey,
                   style: TextStyle(color: Colors.grey),
                   decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color.fromARGB(255, 32, 31, 31),
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 32, 31, 31),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(100),
                         borderSide: BorderSide(
                             color: Color.fromARGB(255, 145, 145, 145)),
                       ),
@@ -80,10 +81,7 @@ class LoginPage extends StatelessWidget {
                 SizedBox(height: 40),
                 InkWell(
                     onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                      Get.to(HomeScreen());
                     },
                     child: Button(name: "Login")),
                 SizedBox(height: 30),
@@ -168,10 +166,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignupPage()));
+                        Get.to(SignupPage());
                       },
                       child: Text(
                         " Sign up",

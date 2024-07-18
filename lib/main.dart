@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:login_signup_ui/features/authentication/controllers/otp_controller.dart';
 import 'package:login_signup_ui/firebase_options.dart';
 import 'package:login_signup_ui/repository/authentication_repository/authentication_repository%20.dart';
-import 'package:login_signup_ui/screens/profile.dart';
+import 'package:login_signup_ui/screens/login.dart';
 
 void main() {
   //Before running or generating widgets first initialize the firebase
@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProfileScreen(),
+      home: LoginPage(),
     );
   }
 }

@@ -7,7 +7,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:login_signup_ui/Componets/button.dart';
 import 'package:login_signup_ui/Componets/heading_text.dart';
 import 'package:login_signup_ui/Componets/inputfeild.dart';
-import 'package:login_signup_ui/screens/enter_otp.dart';
+import 'package:login_signup_ui/features/authentication/models/user_model.dart';
 import 'package:login_signup_ui/screens/login.dart';
 import 'package:login_signup_ui/features/authentication/controllers/signup_controller.dart';
 
@@ -66,7 +66,7 @@ class _SignupPageState extends State<SignupPage> {
                         filled: true,
                         fillColor: Color.fromARGB(255, 32, 31, 31),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(100),
                           borderSide: BorderSide(
                               color: Color.fromARGB(255, 145, 145, 145)),
                         ),
@@ -116,16 +116,24 @@ class _SignupPageState extends State<SignupPage> {
                   SizedBox(height: 40),
                   InkWell(
                       onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          // SignupController.instance.registerUser(
-                          //     controller.email.text.trim(),
-                          //     controller.password.text.trim());
-                          SignupController.instance.phoneAuthentication(controller.phoneNo.text.trim());
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => EnterOtp()));
-                        }
+                        //if (_formKey.currentState!.validate()) {
+                        // email and password authentication
+
+                        // SignupController.instance.registerUser(
+                        //     controller.email.text.trim(),
+                        //     controller.password.text.trim());
+
+                        // phone no authentication
+
+                        // SignupController.instance.phoneAuthentication(controller.phoneNo.text.trim());
+
+                        //Get the user and pass it to the controller
+                        final user = UserModel(
+                            fullName: controller.fullName.text.trim(),
+                            email: controller.email.text.trim(),
+                            phoneNo: controller.phoneNo.text.trim(),
+                            password: controller.password.text.trim());
+                        SignupController.instance.createUser(user);
                       },
                       child: Button(name: "Continue")),
                   SizedBox(height: 30),
@@ -210,10 +218,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage()));
+                          Get.to(LoginPage());
                         },
                         child: Text(
                           " Sign in",

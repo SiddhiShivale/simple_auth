@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:login_signup_ui/Componets/listTile.dart';
+import 'package:login_signup_ui/screens/home_screen.dart';
 import 'package:login_signup_ui/screens/update_profile_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -17,7 +19,9 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(HomeScreen());
+            },
             icon: Icon(
               LineAwesomeIcons.angle_left_solid,
               color: Colors.white,
@@ -86,10 +90,7 @@ class ProfileScreen extends StatelessWidget {
                 height: 40,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => UpdateProfileScreen()));
+                    Get.to(UpdateProfileScreen());
                   },
                   child: Text(
                     'Edit Profile',
@@ -138,4 +139,8 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+
+  getUserData() {}
+
+  getAllUsers() {}
 }

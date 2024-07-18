@@ -1,6 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:login_signup_ui/Componets/button.dart';
@@ -12,8 +13,6 @@ class resetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var screenWidth = screenSize.width;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
@@ -100,8 +99,7 @@ class resetPassword extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+                      Get.to(LoginPage());
                     },
                     child: Text(
                       " Log in",

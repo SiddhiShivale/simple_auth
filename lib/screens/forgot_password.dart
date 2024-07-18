@@ -1,12 +1,14 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, sized_box_for_whitespace, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_signup_ui/Componets/button.dart';
 import 'package:login_signup_ui/Componets/heading_text.dart';
 import 'package:login_signup_ui/Componets/inputfeild.dart';
 import 'package:login_signup_ui/screens/enter_otp.dart';
 import 'package:login_signup_ui/screens/login.dart';
+import 'package:login_signup_ui/screens/reset_password.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
@@ -19,8 +21,7 @@ class ForgotPassword extends StatelessWidget {
         backgroundColor: Colors.black,
         leading: InkWell(
             onTap: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => LoginPage()));
+              Get.to(LoginPage());
             },
             child: Icon(Icons.arrow_back, color: Colors.grey)),
       ),
@@ -53,8 +54,7 @@ class ForgotPassword extends StatelessWidget {
               SizedBox(height: 40),
               InkWell(
                   onTap: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => EnterOtp()));
+                    Get.to(resetPassword());
                   },
                   child: Button(name: "Continue"))
             ],

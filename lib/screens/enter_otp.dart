@@ -9,6 +9,7 @@ import 'package:login_signup_ui/Componets/heading_text.dart';
 import 'package:login_signup_ui/features/authentication/controllers/otp_controller.dart';
 import 'package:login_signup_ui/screens/forgot_password.dart';
 import 'package:login_signup_ui/screens/home_screen.dart';
+import 'package:login_signup_ui/screens/signup.dart';
 
 class EnterOtp extends StatelessWidget {
   const EnterOtp({super.key});
@@ -23,8 +24,7 @@ class EnterOtp extends StatelessWidget {
         backgroundColor: Colors.black,
         leading: InkWell(
             onTap: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => ForgotPassword()));
+              Get.to(SignupPage());
             },
             child: Icon(Icons.arrow_back, color: Colors.grey)),
       ),
@@ -82,10 +82,7 @@ class EnterOtp extends StatelessWidget {
               InkWell(
                   onTap: () {
                     OtpController.instance.verifyOTP(otp);
-                    Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomeScreen()));
+                    Get.to(HomeScreen());
                   },
                   child: Button(name: "Continue")),
               SizedBox(height: 40),
